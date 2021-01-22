@@ -1,0 +1,22 @@
+﻿@using RS1_2020_01_30.VM;
+
+@model TakmicenjeIndexVM
+
+
+<body>
+    <form asp-controller="Takmicenje" asp-action="Prikaz">
+        <div class="container">
+            <br /><br /><br />
+
+            <div>
+                <label>Škola domaćin: </label>
+                <select asp-for="SkolaID" asp-items="@Model.listaSkola"></select>
+            </div>
+            <div>
+                <label>Razred: </label>
+                <select asp-for="razred" asp-items="@Model.listaRazreda"></select>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Odaberi</button>
+    </form>
+</body>

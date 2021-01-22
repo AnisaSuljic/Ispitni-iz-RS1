@@ -1,0 +1,49 @@
+﻿@using RS1_2020_01_30.VM;
+
+@model TakmicenjeRezultatiVM
+
+<style>
+    input{
+        border:none;
+        font-weight:bold;
+    }
+</style>
+<body>
+    <div class="container">
+        <br /><br /><br />
+
+        <input hidden asp-for="SkolaID" />
+
+        <div>
+            <label>Škola domaćin: </label>
+            <input readonly asp-for="Skola" />
+        </div>
+        <div>
+            <label>Informatika: </label>
+            <input readonly asp-for="Predmet" />
+        </div>
+        <div>
+            <label>Razred: </label>
+            <input readonly asp-for="Razred" />
+        </div>
+        <div>
+            <label>Datum: </label>
+            <input readonly asp-for="Datum" />
+        </div>
+    </div><br />
+    <a href="#" class="btn btn-primary">Zakljucaj</a>
+    
+
+    <div id="AjaxDiv" >
+
+    </div><br /><br />
+
+    <a class="btn btn-primary" href="/Takmicenje/Dodaj?idSkola=@Model.SkolaID">Novo takmičenje</a>
+
+</body>
+
+<script>
+    $.get("/Ajax/Index?TakmID=@Model.TakmicenjeID", function (response) {
+        $("#AjaxDiv").html(response);
+    })
+</script>
