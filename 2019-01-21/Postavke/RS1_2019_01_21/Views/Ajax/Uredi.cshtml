@@ -1,0 +1,21 @@
+﻿@using RS1_2019_01_21.VM
+
+@model AjaxUrediVM
+
+<body>
+    <form asp-controller="Ajax" asp-action="Snimi">
+        <input hidden asp-for="MaturskiIspitStavkeID" />
+
+        <div class="container">
+            <div>
+                <label>Ucenik</label>
+                <input readonly asp-for="UcenikIme" />
+            </div>
+            <div>
+                <label>Bodovi</label>
+                <input asp-for="Bodovi" />
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Snimi</button>
+    </form>
+</body>

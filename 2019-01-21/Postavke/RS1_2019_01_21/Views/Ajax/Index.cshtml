@@ -1,0 +1,38 @@
+﻿@using RS1_2019_01_21.VM
+
+@model AjaxIndexVM
+
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Ucenik</td>
+                    <td>Prosjek ocjena</td>
+                    <td>Pristupio ispitu</td>
+                    <td>Rezultati maturskog</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.listaMatStavke)
+                {
+                    <tr>
+                        <td>@x.UcenikIme</td>
+                        <td>@x.Prosjek</td>
+                        <td>@x.pristupio</td>
+                        <td>@x.bodovi</td>
+                        <td>
+                            <a asp-controller="Ajax"
+                               asp-action="Uredi"
+                               asp-route-MatruskiStavkeID="@x.MaturskiIspitStavkaID"
+                               ajax-poziv="da"
+                               ajax-rezultat="AjaxDiv">Uredi</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>

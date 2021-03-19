@@ -1,0 +1,33 @@
+﻿@using RS1_2018_01_23.VM
+
+@model AjaxUrediVM
+
+<body>
+    <div class="container">
+        <form asp-controller="Ajax" asp-action="SnimiRezultat">
+            <input asp-for="RezultatID" hidden />
+
+            <div>
+                <label>Pretraga:</label>
+                <input asp-for="PretragaNaziv" readonly />
+            </div>
+            @if (Model.vrstaVrijednosti == 0)
+            {
+                <div>
+                    <label>Izmjena vrijednosti:</label>
+                    <input asp-for="Vrijednost" type="number" />
+                    <input asp-for="jmj" readonly />
+                </div>
+            }
+            else
+            {
+                <div>
+                    <label>Vrijednosti:</label>
+                    <select asp-for="modalitetID" asp-items="@Model.listaModaliteta"></select>
+                </div>
+            }
+            <button class="btn btn-primary" type="submit">Snimi</button>
+        </form>
+    </div>
+
+</body>

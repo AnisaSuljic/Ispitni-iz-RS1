@@ -1,0 +1,33 @@
+﻿@using RS1_2020_01_30.VM
+
+@model TakmicenjeDodajVM
+
+<body>
+    <form asp-controller="Takmicenje" asp-action="Snimi">
+        <div class="container">
+            <br /><br /><br />
+            <h3>Dodavanje takmicenja</h3>
+            <input asp-for="SkolaId" hidden />
+
+            <div>
+                <label>Škola domaćin</label>
+                <input asp-for="SkolaNaziv" readonly />
+            </div>
+            <div>
+                <label>Predmet</label>
+                <select asp-for="PredmetID" asp-items="@Model.Predmeti"></select>
+            </div>
+            <div>
+                <label>Razred</label>
+                <select asp-for="RazredID" asp-items="@Model.Razredi"></select>
+            </div>
+            <div>
+                <label>Datum</label>
+                <input asp-for="Datum" type="date" />
+
+            </div>
+            <button class=" btn btn-primary" type="submit">Snimi</button>
+        </div>
+    </form>
+
+</body>

@@ -1,0 +1,55 @@
+﻿@using RS1_2020_01_30.VM
+
+@model TakmicenjeOdabirVM
+
+<body>
+
+    <div class="container">
+        <form asp-controller="Takmicenje" asp-action="Odaberi">
+            <br /><br /><br />
+            <h3>Skola domacin: @Model.SkolaNaziv</h3>
+            <h3>Razred: @Model.Razred</h3>
+
+
+            <label>Filter za skole</label>
+            <select asp-for="SkolaID" asp-items="@Model.SkoleLista"></select>
+            <button type="submit">filtriraj</button>
+
+
+            <input hidden asp-for="SkolaID" />
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <td>Takmicenje ID</td>
+                        <td>Predmet</td>
+                        <td>Razred</td>
+                        <td>Datum</td>
+                        <td>Broj ucesnika koji nisu pristupili</td>
+                        <td>Najbolji ucenik(skola|odjeljenje|ime i prezime)</td>
+                        <td>Akcija</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model.listaTakmicenja)
+                    {
+                        <tr>
+                            <td>@x.TakmicenjeID</td>
+                            <td>@x.PredmetNaziv</td>
+                            <td>@x.Razred</td>
+                            <td>@x.Datum</td>
+                            <td>@x.BrojOnihKojiNisuPristupili</td>
+                            <td>@x.NajboljiUcenikSkola|@x.NajboljiUcenikOdjeljenje|@x.NajboljiUcenikImePrezime</td>
+                            <td>
+                                <a asp-controller="Takmicenje"
+                                   asp-action="Rezultati"
+                                   asp-route-TakmID="@x.TakmicenjeID">Rezultati</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a class="btn btn-primary" asp-controller="Takmicenje" asp-action="Dodaj" asp-route-SkolaID="@Model.SkolaID">Dodaj</a>
+        </form></div>
+    
+</body>

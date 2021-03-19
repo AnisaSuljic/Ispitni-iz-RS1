@@ -1,0 +1,48 @@
+﻿@using RS1_2018_01_23.VM
+
+@model AjaxIndexVM
+
+
+<body>
+    <div class="container">
+        <input hidden asp-for="UputnicaID" />
+        <table class=" table table-bordered">
+            <thead>
+                <tr>
+                    <td>Pretraga</td>
+                    <td>Izmjerena vrijednost</td>
+                    <td>JMJ</td>
+                    <td>Referentne vrijednosti</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.listaRezultata)
+                {
+                    <tr>
+                        <td>@x.RezPretragaNaziv</td>
+                        <td>@x.IzmjerenaVrijednost</td>
+                        <td>@x.jmj</td>
+                        <td>@x.refVrijednosti</td>
+                        @if (Model.isGotov)
+                        {
+                            <td>
+                                <a>Detalji</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a asp-controller="Ajax"
+                                   asp-action="Uredi"
+                                   asp-route-RezultatID="@x.RezultatiPretrageID"
+                                   ajax-poziv="da"
+                                   ajax-rezultat="AjaxDiv">Detalji</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

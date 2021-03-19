@@ -1,0 +1,30 @@
+﻿@using RS1_2019_01_21.VM
+
+@model OdrzanaNastavaIndexVM
+
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Skola</td>
+                    <td>Ime i prezime nastavnika</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.listaNastavnika)
+                {
+                    <tr>
+                        <td>@x.SkolaNaziv</td>
+                        <td>@x.NastavnikImePrezime</td>
+                        <td><a asp-controller="OdrzanaNastava"
+                               asp-action="Prikaz"
+                               asp-route-NastavnikID="@x.NastavnikID">Akcija</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>

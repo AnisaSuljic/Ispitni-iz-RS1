@@ -1,0 +1,23 @@
+﻿@using RS1_2019_12_02.VM
+
+@model AjaxUrediVM
+
+<body>
+    <form asp-controller="Ajax" asp-action="SnimiIzmjene">
+        <div class="container">
+            <br /><br /><br />
+
+            <input asp-for="PopravniIspitStavkaID" hidden />
+
+            <div>
+                <label>Ucenik</label>
+                <input readonly asp-for="UcenikNaziv" />
+            </div>
+            <div>
+                <label>Bodovi</label>
+                <input asp-for="Bodovi" />
+            </div>
+            <button class="btn btn-primary" type="submit">Snimi</button>
+        </div>
+    </form>
+</body>

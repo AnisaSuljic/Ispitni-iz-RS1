@@ -1,0 +1,37 @@
+﻿@using RS1_2019_01_21.VM
+
+@model OdrzanaNastavaUrediVM
+
+<body>
+  
+        <div class="container">
+            <form asp-controller="OdrzanaNastava" asp-action="SnimiUredjivanje">
+                <input hidden asp-for="MaturskiIspitID" />
+
+                <div>
+                    <label>Datum ispita</label>
+                    <input readonly asp-for="DatumIspita" type="date" />
+                </div>
+                <div>
+                    <label>Predmet</label>
+                    <input readonly asp-for="PredmetNaziv" />
+                </div>
+                <div>
+                    <label>Napomena</label><br />
+                    <textarea asp-for="Napomena" placeholder="Napomena"></textarea>
+                </div>
+
+                <br />
+                <button class="btn btn-primary" type="submit">Snimi</button>
+            </form>
+            <br /><br />
+            <div id="AjaxDiv">
+
+            </div>
+        </div>
+</body>
+<script>
+    $.get("/Ajax/Index?MaturskiID=@Model.MaturskiIspitID", function (d) {
+        $("#AjaxDiv").html(d);
+    });
+</script>

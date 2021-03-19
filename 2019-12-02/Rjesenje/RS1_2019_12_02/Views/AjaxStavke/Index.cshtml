@@ -1,0 +1,78 @@
+﻿@model RS1_2019_12_02.ViewModels.AjaxStudentListaVM
+@{
+    Layout = null;
+}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Učenik</td>
+                <td>Odjeljenje</td>
+                <td>Broj u dnevniku</td>
+                <td>Pristupio ispitu</td>
+                <td>Rezultat maturskog (max 100)</td>
+                <td>Akcija</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var Row in Model.Rows)
+            {
+            <tr>
+                <td>@Row.Ucenik</td>
+                <td>@Row.Odjeljenje</td>
+                <td>@Row.BrojUcenikaUDnevniku</td>
+                @if (Row.Bodovi == null)
+                {
+                    <td><p style="color: red">Nema pravo na popravni</p></td>
+                    <td>0</td>
+
+                }
+                else if (Row.Pristupio == true)
+                {
+                    <td><a class="btn btn-success" asp-controller="AjaxStavke" asp-action="UcenikJeOdsutan" asp-route-id="@Row.PopravniIspitStavkaId">DA</a></td>
+                    <td><input class="Bodovi" type="text" value="@Row.Bodovi" id="@Row.PopravniIspitStavkaId"/></td>
+                }
+                else if (Row.Pristupio == false)
+                {
+                    <td><a class="btn btn-danger" asp-controller="AjaxStavke" asp-action="UcenikJePrisutan" asp-route-id="@Row.PopravniIspitStavkaId">NE</a></td>
+                    <td>X</td>
+                }
+
+                @if (Row.Pristupio == true)
+                {
+                    <td><button id="@Row.PopravniIspitStavkaId" class="UrediStavku" 
+                                ajax-poziv="da" 
+                                ajax-rezultat="AjaxDiv" 
+                                ajax-url="/AjaxStavke/Uredi?Id=@Row.PopravniIspitStavkaId" >Uredi</button></td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+
+<script>
+    function UpdateBodovi() {
+        $("input.Bodovi").focusout(function (e, status) {
+            var id = $(this).attr("id");
+            var bodovi = $(this).val();
+            
+            $.post("/AjaxStavke/UpdateBodovi?id=" + id + "&bodovi=" + bodovi);
+
+
+        });
+    }
+
+    $(document).ready(function () {
+    // izvršava nakon što glavni html dokument bude generisan
+        UpdateBodovi();
+    });
+
+    $(document).ajaxComplete(function () {
+        // izvršava nakon bilo kojeg ajax poziva
+        UpdateBodovi();
+    });
+</script>

@@ -1,0 +1,21 @@
+﻿@using RS1_2020_01_30.VM
+
+@model AjaxDodajUcesnikaVM
+
+<body>
+    <div class="container">
+        <form asp-controller="Ajax" asp-action="SnimiUcesnika">
+            <input hidden asp-for="TakmicenjeID" />
+
+            <div>
+                <label>Ucesnik:</label>
+                <select asp-for="Ucenici_TakmUcID" asp-items="@Model.Ucenici_TakmUc"></select>
+            </div>
+            <div>
+                <label>Bodovi:</label>
+                <input type="number" asp-for="Bodovi" />
+            </div>
+            <button class="btn btn-primary" type="submit">Snimi</button>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,47 @@
+﻿@using RS1_2019_06_25.VM
+
+@model AjaxIndexVM
+
+<body>
+    <div class="container">
+        <br /><br /><br />
+        <input hidden asp-for="@Model.IspitniTerminID" />
+      
+        <table class="table table-bordered" style="text-align:center">
+            <thead>
+                <tr>
+                    <td>Student</td>
+                    <td>Pristupio ispitu</td>
+                    <td>Ocjena</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.ListaIspitniTerminStavke)
+                {
+                    <tr>
+                        <td>@x.StudentIme</td>
+                        @if (x.IsPristupio)
+                        {
+                            <td><a class="btn btn-success">Pristupio</a></td>
+                            <td>@x.Ocjena</td>
+                            <td>
+                                <a asp-controller="Ajax"
+                                   asp-action="Uredi"
+                                   asp-route-IspitniTerminStavkaID="@x.IspitniTerminStavkeID">Uredi</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td><a class="btn btn-danger">Nije pristupio</a></td>
+                            <td></td>
+
+                            <td></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+    </div>
+</body>

@@ -1,0 +1,29 @@
+﻿@using RS1_2019_11_04.VM
+
+@model PopravniIspitIndexVM
+
+<body>
+    <div class="container"><br /><br /><br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Razred</td>
+                    <td>Predmet</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.ListaPredmeta)
+                {
+                    <tr>
+                        <td>@x.RazredNaziv</td>
+                        <td>@x.PredmetNaziv</td>
+                        <td><a asp-controller="PopravniIspit"
+                               asp-action="Prikaz"
+                               asp-route-PredmetID="@x.PredmetID">Odaberi</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

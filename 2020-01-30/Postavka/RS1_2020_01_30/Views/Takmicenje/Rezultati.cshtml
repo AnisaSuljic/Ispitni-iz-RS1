@@ -1,0 +1,42 @@
+﻿@using RS1_2020_01_30.VM
+
+@model TakmicenjeRezultatiVM
+
+<body>
+    <div class="container">
+        <br /><br /><br />
+
+        <input hidden asp-for="TakmicenjeID" />
+
+        <div>
+            <label>Škola domacin</label>
+            <input readonly asp-for="SkolaNaziv" />
+        </div>
+        <div>
+            <label>Predmet</label>
+            <input readonly asp-for="PredmetNaziv" />
+        </div>
+        <div>
+            <label>Razred</label>
+            <input readonly asp-for="Razred" />
+        </div>
+        <div>
+            <label>Datum</label>
+            <input readonly asp-for="Datum" />
+        </div>
+        <a class=" btn btn-primary" asp-controller="Ajax"
+                asp-action="Zakljucaj"
+                asp-route-TakmID="@Model.TakmicenjeID">Zakljucaj</a>
+        <label>(Zakljucavanje je moguće jednom i nije ga moguće poništiti za odredjeno takmičenje.Za isprobavanje napravite novo takmicenje)</label>
+        <br /><br /><br />
+        <div id="AjaxDiv">
+
+        </div>
+    </div>
+</body>
+<script>
+    $.get("/Ajax/Index?TakmID=@Model.TakmicenjeID", function (d) {
+        $("#AjaxDiv").html(d);
+    })
+
+</script>

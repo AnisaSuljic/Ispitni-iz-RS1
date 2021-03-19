@@ -1,0 +1,58 @@
+﻿@using RS1_2019_11_04.VM
+
+@model AjaxIndexVM
+
+<body>
+    <div class="container">
+        <br /><br /><br />
+        <input hidden asp-for="PopravniIspitID" />
+
+        <div style="text-align:center">
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Ucenik</td>
+                    <td>Odjeljenje</td>
+                    <td>Broj u dnevniku</td>
+                    <td>Broj ucenika na popravnom ispitu</td>
+                    <td>Bodovi</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.ListPopravniIspitStavke)
+                {
+                <tr>
+                    <td>@x.UcenikNaziv</td>
+                    <td>@x.Odjeljenje</td>
+                    <td>@x.BrojDnevnik</td>
+                    @if (x.IsPrisutan)
+                    {
+                        <td><a class="btn btn-success"
+                               asp-controller="Ajax"
+                               asp-action="NijePristupio"
+                               asp-route-ID="@x.PopravniIspitStavkeID">DA</a></td>
+                    }
+                    else
+                    {
+                        <td><a class="btn btn-danger"asp-controller="Ajax"
+                               asp-action="Pristupio"
+                               asp-route-ID="@x.PopravniIspitStavkeID">NE</a></td>
+
+                    }
+                    <td>@x.Bodovi</td>
+                    <td>
+                        <a asp-controller="Ajax"
+                           asp-action="Uredi"
+                           asp-route-IspitID="@x.PopravniIspitStavkeID"
+                           ajax-poziv="da"
+                           ajax-rezultat="AjaxDiv">Uredi</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+      
+    </div>
+</body>

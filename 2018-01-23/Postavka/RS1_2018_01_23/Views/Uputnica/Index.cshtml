@@ -1,0 +1,43 @@
+﻿@using RS1_2018_01_23.VM
+
+@model UputnicaIndexVM
+
+
+<body>
+    <div class="container">
+       
+        <table class=" table table-bordered">
+            <thead>
+                <tr>
+                    <td>Uputio</td>
+                    <td>Pacijent</td>
+                    <td>Vrsta pretrage</td>
+                    <td>Datum evidentiranja rezultata pretrage</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.listaUputnica)
+                {
+                    <tr>
+                        <td>@x.Uputio</td>
+                        <td>@x.Pacijent</td>
+                        <td>@x.VrstaPretrage</td>
+                        @if (x.DatumEvidentiranjaRezultataPretrage == null)
+                        {
+                            <td>(nema rezultata)</td>
+                        }
+                        else { 
+                             <td>@x.DatumEvidentiranjaRezultataPretrage</td>
+                        }
+                        <td><a asp-controller="Uputnica"
+                               asp-action="Detalji"
+                               asp-route-UputnicaID="@x.UputnicaID">Detalji</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" asp-controller="Uputnica"
+           asp-action="Dodaj">Dodaj</a>
+    </div>
+</body>

@@ -1,0 +1,42 @@
+﻿@using RS1_2019_12_02.VM
+
+@model PopravniIspitPrikazVM
+
+
+<body>
+    <div class="container">
+        <br /><br /><br />
+        <div>
+            <label>Popravni ispit za odjeljenje @Model.OdjeljenjeOznaka - @Model.SkolaOznaka - @Model.SkolGodOznaka</label>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Datum popravnog ispita</td>
+                    <td>Predmet</td>
+                    <td>Broj ucenika na popravnom ispitu</td>
+                    <td>Broj ucenika koji su polozili popravni ispit (bodovi veci od 50)</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.listaIspita)
+                {
+                    <tr>
+                        <td>@x.DatumIspita</td>
+                        <td>@x.Predmet</td>
+                        <td>@x.BrojNaPopravnom</td>
+                        <td>@x.BrojPolozenih</td>
+                        <td><a asp-controller="PopravniIspit"
+                               asp-action="Uredi"
+                               asp-route-PopravniIspitID="@x.PopravniIspitID">Uredi</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" asp-controller="PopravniIspit"
+           asp-action="Dodaj"
+           asp-route-OdjeljenjeID="@Model.OdjeljenjeID">Dodaj</a>
+    </div>
+
+</body>

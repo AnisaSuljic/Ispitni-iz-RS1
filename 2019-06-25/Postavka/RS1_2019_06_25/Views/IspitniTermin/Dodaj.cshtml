@@ -1,0 +1,33 @@
+﻿@using RS1_2019_06_25.VM
+
+@model IspitniTerminDodajVM
+
+<body>
+    <form asp-controller="IspitniTermin" asp-action="Snimi">
+        <div class="container">
+            <br /><br /><br />
+            <input hidden asp-for="@Model.AngazmanID" />
+            <div>
+                <label>Predmet</label>
+                <input readonly asp-for="@Model.PredmetNaziv" />
+            </div>
+            <div>
+                <label>Nastavnik</label>
+                <input readonly asp-for="@Model.NastavnikNaziv" />
+            </div>
+            <div>
+                <label>Akademska godina</label>
+                <input readonly asp-for="@Model.AkademskaGodinaNaziv" />
+            </div>
+            <div>
+                <label>Datum ispitta</label>
+                <input type="date" asp-for="@Model.DatumIspita" />
+            </div>
+            <div>
+                <label>Napomena</label><br />
+                <textarea asp-for="@Model.Napomena"placeholder="Napomena"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Snimi</button>
+        </div>
+    </form>
+</body>

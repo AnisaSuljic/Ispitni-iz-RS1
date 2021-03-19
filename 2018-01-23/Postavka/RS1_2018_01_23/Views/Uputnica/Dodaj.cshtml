@@ -1,0 +1,29 @@
+﻿@using RS1_2018_01_23.VM
+
+@model UputnicaDodajVM
+
+
+<body>
+    <div class="container">
+
+        <form asp-controller="Uputnica" asp-action="Snimi">
+            <div>
+                <label>Ljekar uputio:</label>
+                <select asp-for="LjekarID" asp-items="@Model.listaLjekara"></select>
+            </div>
+            <div>
+                <label>Datum uputnice:</label>
+                <input type="date" asp-for="DatumUputnice"/>
+            </div>
+            <div>
+                <label>Pacijent:</label>
+                <select asp-for="PacijentID" asp-items="@Model.listaPacijenata"></select>
+            </div>
+            <div>
+                <label>Vrsta pretrage:</label>
+                <select asp-for="VrstaPretragaID" asp-items="@Model.listaVrstaPretraga"></select>
+            </div>
+            <button class="btn btn-primary" type="submit">Snimi</button>
+        </form>
+    </div>
+</body>

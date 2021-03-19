@@ -1,0 +1,102 @@
+﻿@using RS1_2020_01_30.VM
+
+@model AjaxIndexVM
+
+<body>
+    <div class="container">
+        
+        <input hidden asp-for="TakmicenjeID" />
+
+        <table class="table table-bordered"  style="text-align:center">
+            <thead>
+                <tr>
+                    <td>Odjeljenje</td>
+                    <td>Broj u dnevniku</td>
+                    <td>Pristupio</td>
+                    <td>Rezultat bodovi (max 100)</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.TakmUcesniciLista)
+                {
+                    <tr>
+                        <td>@x.OdjeljenjeOznaka</td>
+                        <td>@x.BrojDnevnik</td>
+                        @if (!Model.IsZakljucano)
+                        {
+                            @if (@x.IsPristupio)
+                            {
+                                <td>
+                                    <a asp-controller="Ajax"
+                                       asp-action="Pristupio"
+                                       asp-route-TakmicenjeUcId="@x.TakmicenjeUcesnikID"
+                                       class="btn btn-success">DA</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a asp-controller="Ajax"
+                                       asp-action="NijePristupio"
+                                       asp-route-TakmicenjeUcId="@x.TakmicenjeUcesnikID"
+                                       class="btn btn-danger">NE</a>
+                                </td>
+                            }
+                            <td><input class="Bodovi" id="@x.TakmicenjeUcesnikID" value="@x.Bodovi" /></td>
+                            <td>
+                                <a asp-controller="Ajax"
+                                   asp-action="UrediUcesnika"
+                                   asp-route-TakmicenjeUcId="@x.TakmicenjeUcesnikID"
+                                   ajax-poziv="da"
+                                   ajax-rezultat="AjaxDiv">Uredi</a>
+                            </td>
+                        }
+                        else
+                        {
+                            @if (@x.IsPristupio)
+                            {
+                                <td>
+                                    <a class="btn btn-success">DA</a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a class="btn btn-danger">NE</a>
+                                </td>
+                            }
+                            <td><input value="@x.Bodovi" /></td>
+                            <td>
+                                <a >Uredi</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" asp-controller="Ajax"
+           asp-action="DodajUcesnika"
+           asp-route-TakmicenjeId="@Model.TakmicenjeID"
+           ajax-poziv="da" ajax-rezultat="AjaxDiv">Dodaj ucesnika</a>
+    </div>
+</body>
+<script>
+    function UpdateBodovi() {
+        $("input.Bodovi").focusout(function (e, status) {
+            var id = $(this).attr("id");
+            var bodovi = $(this).val();
+
+            $.post("/Ajax/UpdateBodovi?TakmUcID="+id + "&NoviBodovi=" + bodovi);
+        });
+    }
+
+    $(document).ready(function () {
+        UpdateBodovi();
+    });
+
+    $(document).ajaxComplete(function () {
+        UpdateBodovi();
+    });
+
+</script>

@@ -1,0 +1,35 @@
+﻿@using RS1_2019_06_25.VM
+
+@model IspitniTerminIndexVM
+
+<body>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Naziv predmeta</td>
+                    <td>Akademska godina</td>
+                    <td>Ime prezime nastavika</td>
+                    <td>Broj odrzanih casova</td>
+                    <td>Broj studenata na predmetu</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.ListaAngazmana)
+                {
+                    <tr>
+                        <td>@x.NazivPredmeta</td>
+                        <td>@x.AkademskaGodina</td>
+                        <td>@x.ImePrezimeNastavnika</td>
+                        <td>@x.BrojOdrzanihCasova</td>
+                        <td>@x.BrojStudenataNaPredmetu</td>
+                        <td><a asp-controller="IspitniTermin"
+                               asp-action="Prikaz"
+                               asp-route-AngazmanID="@x.AngazovanID">Odaberi</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

@@ -1,0 +1,43 @@
+﻿@using RS1_2019_12_02.VM
+
+@model PopravniIspitUrediVM
+
+<body>
+        <div class="container">
+            <br /><br /><br />
+
+            <input asp-for="OdjeljenjeID" hidden />
+            <input asp-for="SkolaID" hidden />
+            <input asp-for="SkolskaGodinaID" hidden />
+
+            <div>
+                <label>Predmet</label>
+                <input asp-for="PredmetOznaka" />
+            </div>
+            <div>
+                <label>Datum ispita</label>
+                <input type="date" asp-for="DatumIspita" />
+            </div>
+            <div>
+                <label>Skola</label>
+                <input readonly asp-for="SkolaOznaka" />
+            </div>
+            <div>
+                <label>Skolska godina</label>
+                <input readonly asp-for="SkolGodOznaka" />
+            </div>
+            <div>
+                <label>Odjeljenje</label>
+                <input readonly asp-for="OdjeljenjeOznaka" />
+            </div>
+            <br /><br /><br />
+            <div id="AjaxDiv">
+
+            </div>
+        </div>
+</body>
+<script>
+    $.get("/Ajax/Index?PopravniID=@Model.PopravniIspitID", function (d) {
+        $("#AjaxDiv").html(d);
+    });
+</script>

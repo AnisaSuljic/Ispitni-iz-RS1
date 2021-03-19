@@ -1,0 +1,42 @@
+﻿@using RS1_2019_11_04.VM
+
+@model PopravniIspitUrediVM
+
+<body>
+        <div class="container">
+            <br /><br /><br />
+
+            <input hidden asp-for="PredmetID" />
+            <input hidden asp-for="PopravniIspitID" />
+            <div>
+                <label>Predmet:</label>
+                <input readonly asp-for="Predmet" />
+            </div>
+            <div>
+                <label>Razred:</label>
+                <input readonly asp-for="Razred" />
+            </div>
+            <div>
+                <label>Datum:</label>
+                <input readonly asp-for="DatumIspita" type="date" />
+            </div>
+            <div>
+                <label>Skola:</label>
+                <select readonly asp-for="SkolaID" asp-items="@Model.SkolaLista"></select>
+            </div>
+            <div>
+                <label>Skolska godina:</label>
+                <select readonly asp-for="SkolskaGodinaID" asp-items="@Model.SkolskaGodinaLista"></select>
+            </div>
+            <br /><br /><br />
+            <div id="AjaxDiv">
+
+            </div>
+        </div>
+    </body>
+<script>
+    $.get("/Ajax/Index?IspitID=@Model.PopravniIspitID", function (e) {
+        $("#AjaxDiv").html(e);
+    });
+
+</script>

@@ -1,0 +1,40 @@
+﻿@using RS1_2018_01_23.VM
+
+@model UputnicaDetaljiVM
+
+
+<body>
+    <div class="container">
+        <input hidden asp-for="UputnicaID" />
+        <input hidden asp-for="DatumRezultataDateTime" />
+        <input hidden asp-for="IsGotov" />
+
+        <div>
+            <label>Datum uputnice:</label>
+            <input readonly asp-for="DatumUputnice" />
+        </div>
+        <div>
+            <label>Pacijent:</label>
+            <input readonly asp-for="PacijentIme" />
+        </div>
+        <div>
+            <label>Datum rezultata:</label>
+            <input readonly asp-for="DatumRezultata" />
+        </div>
+        <div>
+            <label>Zavrsen unos:</label>
+            <a asp-controller="Uputnica"
+               asp-action="Zakljucaj"
+               asp-route-UputnicaID="@Model.UputnicaID" class="btn btn-primary">Zakljucaj</a>
+        </div>
+        <br /><br />
+        <div id="AjaxDiv">
+
+        </div>
+    </div>
+</body>
+<script>
+    $.get("/Ajax/Index?UputnicaID=@Model.UputnicaID", function (d) {
+        $("#AjaxDiv").html(d);
+    });
+</script>

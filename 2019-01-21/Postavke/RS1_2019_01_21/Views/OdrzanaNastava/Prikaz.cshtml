@@ -1,0 +1,41 @@
+﻿@using RS1_2019_01_21.VM
+
+@model OdrzanaNastavaPrikazVM
+
+<body>
+    <div class="container">
+        <input hidden asp-for="NastavnikID" />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Datum</td>
+                    <td>Skola</td>
+                    <td>Predmet</td>
+                    <td>Nisu pristupili ucenici</td>
+                    <td>Akcija</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.listaMaturskih)
+                {
+                    <tr>
+                        <td>@x.DatumIspita</td>
+                        <td>@x.SkolaNaziv</td>
+                        <td>@x.PredmetNaziv</td>
+                        <td>@x.NisuPristupili</td>
+                        <td>
+                            <a asp-controller="OdrzanaNastava"
+                               asp-action="Uredi"
+                               asp-route-MaturskiIspitID="@x.MaturskiIspitID">Uredi</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a class="btn btn-primary" asp-controller="OdrzanaNastava"
+           asp-action="Dodaj"
+           asp-route-NastavnikID="@Model.NastavnikID">Dodaj</a>
+
+    </div>
+
+</body>

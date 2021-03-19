@@ -1,0 +1,16 @@
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\RS1_2018_01_23.deps.json
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\RS1_2018_01_23.runtimeconfig.json
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\RS1_2018_01_23.runtimeconfig.dev.json
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\RS1_2018_01_23.dll
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\bin\Debug\netcoreapp2.0\RS1_2018_01_23.pdb
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\obj\Debug\netcoreapp2.0\RS1_2018_01_23.csprojAssemblyReference.cache
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\obj\Debug\netcoreapp2.0\RS1_2018_01_23.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\obj\Debug\netcoreapp2.0\RS1_2018_01_23.AssemblyInfo.cs
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\obj\Debug\netcoreapp2.0\RS1_2018_01_23.csproj.CoreCompileInputs.cache
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\obj\Debug\netcoreapp2.0\RS1_2018_01_23.dll
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\obj\Debug\netcoreapp2.0\RS1_2018_01_23.pdb
+C:\Users\PC\Desktop\2018-01-23\Postavka\RS1_2018_01_23\obj\Debug\netcoreapp2.0\RS1_2018_01_23.genruntimeconfig.cache
